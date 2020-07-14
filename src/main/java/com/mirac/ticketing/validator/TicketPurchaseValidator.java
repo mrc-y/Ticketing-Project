@@ -38,6 +38,9 @@ public class TicketPurchaseValidator implements Validator<Ticket> {
         if (ticket.getTicketPrice() < flight.get().getMinAvailableTicketPrice()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Ticket price can't be lower than min available price");
         }
+        if(flight.get().getSoldTickets() == flight.get().getPlaneCapacity()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Plane is already full");
+        }
         if(TicketDTO.StatusEnum.CANCELLED.name().equalsIgnoreCase(ticket.getStatus())){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Can't purchase a cancelled ticket");
         }
