@@ -1,0 +1,937 @@
+{
+	"info": {
+		"_postman_id": "1a86bfd8-de95-46d5-b069-fa5ea0925d48",
+		"name": "Ticketing App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Airline Requests",
+			"item": [
+				{
+					"name": "Post Airline",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"airlineName\": \"Türk Hava Yolları\",\n    \"airlineCode\": \"TK\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/airline",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"airline"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Airline",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/airline/TK",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"airline",
+								"TK"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Airline",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/airline?name=hava yol",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"airline"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "hava yol"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error - Search Airline Validation Test",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/airline?name=tü",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"airline"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "tü"
+								}
+							]
+						},
+						"description": "This request fails because request param(name) should be at least 3 characters to be able to search"
+					},
+					"response": []
+				},
+				{
+					"name": "Error - Post Airline Null Code Validation",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"airlineName\": \"Pegasus\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/airline",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"airline"
+							]
+						},
+						"description": "This request fails because airlineName can not be null"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Airport Requests",
+			"item": [
+				{
+					"name": "Post Airport",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"airportName\": \"istanbul airport\",\n    \"airportCode\": \"IST\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/airport",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"airport"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Airport",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/airport/ist",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"airport",
+								"ist"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Airport",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/airport?name=anbul",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"airport"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "anbul"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error - Search Airport Validation Test",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/airport?name=ab",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"airport"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "ab"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error - Post Airport Null Code Validation",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"airportName\": \"Sabiha Gökçen\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/airport",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"airport"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Route Requests",
+			"item": [
+				{
+					"name": "Post Route",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fromAirport\": \"CDG\",\n    \"toAirport\": \"IST\",\n    \"routeNumber\": 1923\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/route",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"route"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Route",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/route/1923",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"route",
+								"1923"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Route",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/route?airportName=ist",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"route"
+							],
+							"query": [
+								{
+									"key": "airportName",
+									"value": "ist"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error - Search Route Validation Test",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/route?airportName=is",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"route"
+							],
+							"query": [
+								{
+									"key": "airportName",
+									"value": "is"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error - Post Route Null RouteNumber Validation",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fromAirport\": \"IST\",\n    \"toAirport\": \"SAW\"\n\t\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/route",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"route"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Flight Requests",
+			"item": [
+				{
+					"name": "Post Flight",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"airlineCode\": \"TK\",\n    \"routeNumber\": 1923,\n    \"flightCode\": \"asdasd\",\n    \"flightDate\": \"2020-07-13T16:45:42.01Z\",\n    \"planeCapacity\": 28,\n    \"minAvailableTicketPrice\": 100\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/flight",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"flight"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Flight",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/flight/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"flight",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Flight",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/flight?airlineCode=TK&routeNumber=1923",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"flight"
+							],
+							"query": [
+								{
+									"key": "airlineCode",
+									"value": "TK"
+								},
+								{
+									"key": "routeNumber",
+									"value": "1923"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Flight with FlightDate",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/flight?flightDate=2020-07-13",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"flight"
+							],
+							"query": [
+								{
+									"key": "flightDate",
+									"value": "2020-07-13"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post Flight Null Route Validation",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"airlineCode\": \"TK\",\n    \"flightCode\": \"asdasd\",\n    \"flightDate\": \"2020-07-13T16:45:42.01Z\",\n    \"planeCapacity\": 20,\n    \"ticketPrice\": 10\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/flight",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"flight"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Ticket Requests",
+			"item": [
+				{
+					"name": "Purchase Ticket",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"finartz\",\n    \"surname\": \"dev\",\n    \"flightId\": 3,\n    \"ticketPrice\": 100,\n    \"creditCardNumber\": \"10-85/89?29*87+76&56%43\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/ticket/purchase",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"ticket",
+								"purchase"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Ticket",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/ticket/5f0ca6d01a5bdb84cb5d21e3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"ticket",
+								"5f0ca6d01a5bdb84cb5d21e3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel Ticket",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"CANCELLED\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/ticket/5f0cf642ada6db84d1dfd424",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"ticket",
+								"5f0cf642ada6db84d1dfd424"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Tickets By Name",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/ticket?name=finartz",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"ticket"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "finartz"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Tickets By FlightId",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/ticket?flightId=3&surname=dev",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"ticket"
+							],
+							"query": [
+								{
+									"key": "flightId",
+									"value": "3"
+								},
+								{
+									"key": "surname",
+									"value": "dev"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Activate Ticket",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"ACTIVE\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/ticket/5f0cf642ada6db84d1dfd424",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"ticket",
+								"5f0cf642ada6db84d1dfd424"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
